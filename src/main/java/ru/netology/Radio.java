@@ -79,14 +79,14 @@ public class Radio {
         if (currentVolumeSound == maxVolumeSound) {
             return;
         }
-        this.currentVolumeSound ++;
+        currentVolumeSound++;
     }
 
     public void decreaseCurrentVolumeSound() {
         if (currentVolumeSound == minVolumeSound) {
             return;
         }
-        this.currentVolumeSound --;
+        currentVolumeSound--;
     }
 
 }
