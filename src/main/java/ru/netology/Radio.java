@@ -1,17 +1,26 @@
 package ru.netology;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Radio {
     private int currentRadioStation;
     private int currentVolumeSound;
-    private int maxNumberRadioStation = 9;
+    private int maxNumberRadioStation = 10;
     private int minNumberRadioStation = 0;
-    private int maxVolumeSound = 10;
+    private int maxVolumeSound = 100;
     private int minVolumeSound = 0;
 
 
-    public int getCurrentRadioStation() {
-        return currentRadioStation;
+    public Radio(int maxNumberRadioStation, int minNumberRadioStation) {
+        this.maxNumberRadioStation = maxNumberRadioStation;
+        this.minNumberRadioStation = minNumberRadioStation;
     }
+
 
     public void setCurrentRadioStation(int currentRadioStation) {
         if (currentRadioStation < minNumberRadioStation) {
@@ -22,57 +31,17 @@ public class Radio {
         this.currentRadioStation = currentRadioStation;
     }
 
-    public int getCurrentVolumeSound() {
-        return currentVolumeSound;
-    }
 
     public void setCurrentVolumeSound(int currentVolumeSound) {
         if (currentVolumeSound < minVolumeSound) {
-            return;
-        } else if (currentVolumeSound > maxVolumeSound) {
+            this.currentVolumeSound = minVolumeSound;
             return;
         }
-        this.currentVolumeSound= currentVolumeSound;
-    }
-
-    public int getMaxNumberRadioStation() {
-
-        return maxNumberRadioStation;
-    }
-
-    public void setMaxNumberRadioStation(int maxNumberRadioStation) {
-
-        this.maxNumberRadioStation = maxNumberRadioStation;
-    }
-
-    public int getMinNumberRadioStation() {
-
-        return minNumberRadioStation;
-    }
-
-    public void setMinNumberRadioStation(int minNumberRadioStation) {
-
-        this.minNumberRadioStation = minNumberRadioStation;
-    }
-
-    public int getMaxVolumeSound() {
-
-        return maxVolumeSound;
-    }
-
-    public void setMaxVolumeSound(int maxVolumeSound) {
-
-        this.maxVolumeSound = maxVolumeSound;
-    }
-
-    public int getMinVolumeSound() {
-
-        return minVolumeSound;
-    }
-
-    public void setMinVolumeSound(int minVolumeSound) {
-
-        this.minVolumeSound = minVolumeSound;
+        if (currentVolumeSound > maxVolumeSound) {
+            this.currentVolumeSound = maxVolumeSound;
+            return;
+        }
+        this.currentVolumeSound = currentVolumeSound;
     }
 
     public void increaseCurrentVolumeSound() {
