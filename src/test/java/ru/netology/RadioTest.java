@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class RadioTest {
 
 
-    @Test
+   @Test
      public void shouldGetAndSetCurrentRadioStation() {
         Radio radio = new Radio(11,-1);
         assertEquals(0, radio.getCurrentRadioStation());
@@ -59,6 +59,10 @@ public class RadioTest {
         radio.setCurrentVolumeSound(40);
         radio.increaseCurrentVolumeSound();
         assertEquals(41,radio.getCurrentVolumeSound());
+
+        radio.setCurrentVolumeSound(100);
+        radio.increaseCurrentVolumeSound();
+        assertEquals(100, radio.getCurrentVolumeSound());
     }
 
     @Test
@@ -67,6 +71,10 @@ public class RadioTest {
         radio.setCurrentVolumeSound(40);
         radio.decreaseCurrentVolumeSound();
         assertEquals(39,radio.getCurrentVolumeSound());
+
+        radio.setCurrentVolumeSound(0);
+        radio.decreaseCurrentVolumeSound();
+        assertEquals(0, radio.getCurrentVolumeSound());
     }
 
     //возможность выставлять номер радиостанции с цифрового пульта (вводя числа 0 - 10)
@@ -87,4 +95,19 @@ public class RadioTest {
         assertEquals(5, radio.getCurrentRadioStation());
     }
 
+    @Test
+    void switchNextRadioStation() {
+       Radio radio = new Radio();
+       radio.setCurrentRadioStation(10);
+       radio.switchNextRadioStation();
+       assertEquals(0, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    void switchPreviousRadioStation() {
+       Radio radio = new Radio();
+       radio.setCurrentRadioStation(0);
+       radio.switchPreviousRadioStation();
+       assertEquals(10,radio.getCurrentRadioStation());
+    }
 }
